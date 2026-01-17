@@ -1,0 +1,41 @@
+// =============================== // CRANE BUSINESS MANAGEMENT APP // ANDROID (FLUTTER) – FULL ADVANCED STARTER // ===============================
+
+// HOW TO USE: // 1. Install Flutter SDK // 2. Create project: flutter create crane_manager // 3. Replace lib/main.dart with this file // 4. flutter pub get // 5. flutter run
+
+import 'package:flutter/material.dart';
+
+void main() { runApp(const CraneApp()); }
+
+class CraneApp extends StatelessWidget { const CraneApp({super.key});
+
+@override Widget build(BuildContext context) { return MaterialApp( debugShowCheckedModeBanner: false, title: 'Crane Manager', theme: ThemeData(primarySwatch: Colors.indigo), home: const Dashboard(), ); } }
+
+// ================= DASHBOARD ================= class Dashboard extends StatelessWidget { const Dashboard({super.key});
+
+@override Widget build(BuildContext context) { return Scaffold( appBar: AppBar(title: const Text('Crane Business Dashboard')), body: GridView.count( crossAxisCount: 2, padding: const EdgeInsets.all(12), children: [ menuTile(context, 'Employees', Icons.people, const EmployeePage()), menuTile(context, 'Vehicles', Icons.fire_truck, const VehiclePage()), menuTile(context, 'Sites', Icons.location_city, const SitePage()), menuTile(context, 'Daily Work', Icons.assignment, const DailyWorkPage()), menuTile(context, 'Salary', Icons.currency_rupee, const SalaryPage()), menuTile(context, 'Expenses', Icons.receipt_long, const ExpensePage()), ], ), ); }
+
+Widget menuTile(BuildContext context, String title, IconData icon, Widget page) { return Card( elevation: 4, child: InkWell( onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => page)), child: Column( mainAxisAlignment: MainAxisAlignment.center, children: [Icon(icon, size: 40), const SizedBox(height: 10), Text(title)], ), ), ); } }
+
+// ================= EMPLOYEE ================= class EmployeePage extends StatelessWidget { const EmployeePage({super.key});
+
+@override Widget build(BuildContext context) { return Scaffold( appBar: AppBar(title: const Text('Employees')), floatingActionButton: FloatingActionButton( child: const Icon(Icons.add), onPressed: () {}, ), body: const Center(child: Text('Employee List Here')), ); } }
+
+// ================= VEHICLE ================= class VehiclePage extends StatelessWidget { const VehiclePage({super.key});
+
+@override Widget build(BuildContext context) { return Scaffold( appBar: AppBar(title: const Text('Vehicles')), floatingActionButton: FloatingActionButton( child: const Icon(Icons.add), onPressed: () {}, ), body: const Center(child: Text('Vehicle List Here')), ); } }
+
+// ================= SITE ================= class SitePage extends StatelessWidget { const SitePage({super.key});
+
+@override Widget build(BuildContext context) { return Scaffold( appBar: AppBar(title: const Text('Sites')), floatingActionButton: FloatingActionButton( child: const Icon(Icons.add), onPressed: () {}, ), body: const Center(child: Text('Site List Here')), ); } }
+
+// ================= DAILY WORK ================= class DailyWorkPage extends StatelessWidget { const DailyWorkPage({super.key});
+
+@override Widget build(BuildContext context) { return Scaffold( appBar: AppBar(title: const Text('Daily Work')), body: const Center(child: Text('Daily Work Entry')), ); } }
+
+// ================= SALARY ================= class SalaryPage extends StatelessWidget { const SalaryPage({super.key});
+
+@override Widget build(BuildContext context) { return Scaffold( appBar: AppBar(title: const Text('Salary')), body: const Center(child: Text('Salary Calculation')), ); } }
+
+// ================= EXPENSE ================= class ExpensePage extends StatelessWidget { const ExpensePage({super.key});
+
+@override Widget build(BuildContext context) { return Scaffold( appBar: AppBar(title: const Text('Expenses')), body: const Center(child: Text('Expenses Entry')), ); } }
