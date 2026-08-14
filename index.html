@@ -1,41 +1,421 @@
-// =============================== // CRANE BUSINESS MANAGEMENT APP // ANDROID (FLUTTER) – FULL ADVANCED STARTER // ===============================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub Image Uploader</title>
 
-// HOW TO USE: // 1. Install Flutter SDK // 2. Create project: flutter create crane_manager // 3. Replace lib/main.dart with this file // 4. flutter pub get // 5. flutter run
+<style>
+*{box-sizing:border-box}
 
-import 'package:flutter/material.dart';
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f5f7fb;
+    color:#172033;
+}
 
-void main() { runApp(const CraneApp()); }
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+}
 
-class CraneApp extends StatelessWidget { const CraneApp({super.key});
+.card{
+    background:white;
+    border-radius:16px;
+    padding:20px;
+    box-shadow:0 5px 25px rgba(0,0,0,.08);
+}
 
-@override Widget build(BuildContext context) { return MaterialApp( debugShowCheckedModeBanner: false, title: 'Crane Manager', theme: ThemeData(primarySwatch: Colors.indigo), home: const Dashboard(), ); } }
+h1{
+    margin-top:0;
+}
 
-// ================= DASHBOARD ================= class Dashboard extends StatelessWidget { const Dashboard({super.key});
+label{
+    display:block;
+    font-weight:bold;
+    margin-top:15px;
+    margin-bottom:6px;
+}
 
-@override Widget build(BuildContext context) { return Scaffold( appBar: AppBar(title: const Text('Crane Business Dashboard')), body: GridView.count( crossAxisCount: 2, padding: const EdgeInsets.all(12), children: [ menuTile(context, 'Employees', Icons.people, const EmployeePage()), menuTile(context, 'Vehicles', Icons.fire_truck, const VehiclePage()), menuTile(context, 'Sites', Icons.location_city, const SitePage()), menuTile(context, 'Daily Work', Icons.assignment, const DailyWorkPage()), menuTile(context, 'Salary', Icons.currency_rupee, const SalaryPage()), menuTile(context, 'Expenses', Icons.receipt_long, const ExpensePage()), ], ), ); }
+input{
+    width:100%;
+    padding:11px;
+    border:1px solid #d5d9e2;
+    border-radius:8px;
+}
 
-Widget menuTile(BuildContext context, String title, IconData icon, Widget page) { return Card( elevation: 4, child: InkWell( onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => page)), child: Column( mainAxisAlignment: MainAxisAlignment.center, children: [Icon(icon, size: 40), const SizedBox(height: 10), Text(title)], ), ), ); } }
+input[type=file]{
+    background:#fafbfc;
+}
 
-// ================= EMPLOYEE ================= class EmployeePage extends StatelessWidget { const EmployeePage({super.key});
+button{
+    border:0;
+    border-radius:8px;
+    padding:10px 14px;
+    cursor:pointer;
+    font-weight:bold;
+}
 
-@override Widget build(BuildContext context) { return Scaffold( appBar: AppBar(title: const Text('Employees')), floatingActionButton: FloatingActionButton( child: const Icon(Icons.add), onPressed: () {}, ), body: const Center(child: Text('Employee List Here')), ); } }
+.uploadBtn{
+    margin-top:18px;
+    background:#2563eb;
+    color:white;
+    width:100%;
+}
 
-// ================= VEHICLE ================= class VehiclePage extends StatelessWidget { const VehiclePage({super.key});
+.copyBtn{
+    background:#eef2ff;
+    color:#1d4ed8;
+    white-space:nowrap;
+}
 
-@override Widget build(BuildContext context) { return Scaffold( appBar: AppBar(title: const Text('Vehicles')), floatingActionButton: FloatingActionButton( child: const Icon(Icons.add), onPressed: () {}, ), body: const Center(child: Text('Vehicle List Here')), ); } }
+.status{
+    margin-top:15px;
+    padding:10px;
+    border-radius:8px;
+    background:#f1f5f9;
+}
 
-// ================= SITE ================= class SitePage extends StatelessWidget { const SitePage({super.key});
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
 
-@override Widget build(BuildContext context) { return Scaffold( appBar: AppBar(title: const Text('Sites')), floatingActionButton: FloatingActionButton( child: const Icon(Icons.add), onPressed: () {}, ), body: const Center(child: Text('Site List Here')), ); } }
+th,td{
+    padding:12px;
+    border-bottom:1px solid #e5e7eb;
+    text-align:left;
+    vertical-align:middle;
+}
 
-// ================= DAILY WORK ================= class DailyWorkPage extends StatelessWidget { const DailyWorkPage({super.key});
+.thumb{
+    width:90px;
+    height:90px;
+    object-fit:contain;
+    background:#f5f5f5;
+    border-radius:8px;
+}
 
-@override Widget build(BuildContext context) { return Scaffold( appBar: AppBar(title: const Text('Daily Work')), body: const Center(child: Text('Daily Work Entry')), ); } }
+.urlRow{
+    display:flex;
+    gap:8px;
+    align-items:center;
+}
 
-// ================= SALARY ================= class SalaryPage extends StatelessWidget { const SalaryPage({super.key});
+.url{
+    flex:1;
+    padding:10px;
+    background:#f8fafc;
+    border:1px solid #d5d9e2;
+    border-radius:8px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
 
-@override Widget build(BuildContext context) { return Scaffold( appBar: AppBar(title: const Text('Salary')), body: const Center(child: Text('Salary Calculation')), ); } }
+@media(max-width:650px){
+    th,td{
+        padding:8px;
+    }
 
-// ================= EXPENSE ================= class ExpensePage extends StatelessWidget { const ExpensePage({super.key});
+    .thumb{
+        width:65px;
+        height:65px;
+    }
 
-@override Widget build(BuildContext context) { return Scaffold( appBar: AppBar(title: const Text('Expenses')), body: const Center(child: Text('Expenses Entry')), ); } }
+    .urlRow{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .copyBtn{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h1>GitHub Image URL Generator</h1>
+
+<p>
+Upload multiple images and get direct image URLs.
+</p>
+
+<label>GitHub Username</label>
+<input id="username" placeholder="example: myusername">
+
+<label>Repository Name</label>
+<input id="repo" placeholder="example: product-images">
+
+<label>Branch</label>
+<input id="branch" value="main">
+
+<label>GitHub Personal Access Token</label>
+<input id="token" type="password"
+       placeholder="github_pat_...">
+
+<label>Select Images</label>
+<input id="files" type="file" accept="image/*" multiple>
+
+<button class="uploadBtn" onclick="uploadImages()">
+Upload Images
+</button>
+
+<div id="status" class="status">
+Ready.
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Image</th>
+<th>Direct Image URL</th>
+</tr>
+</thead>
+
+<tbody id="results"></tbody>
+</table>
+
+</div>
+</div>
+
+<script>
+
+async function uploadImages(){
+
+    const username =
+        document.getElementById("username").value.trim();
+
+    const repo =
+        document.getElementById("repo").value.trim();
+
+    const branch =
+        document.getElementById("branch").value.trim() || "main";
+
+    const token =
+        document.getElementById("token").value.trim();
+
+    const files =
+        document.getElementById("files").files;
+
+    const status =
+        document.getElementById("status");
+
+    const results =
+        document.getElementById("results");
+
+    if(!username || !repo || !token){
+        alert("Username, Repository and Token are required.");
+        return;
+    }
+
+    if(files.length === 0){
+        alert("Please select images.");
+        return;
+    }
+
+    status.innerText =
+        "Uploading " + files.length + " image(s)...";
+
+    for(let i=0;i<files.length;i++){
+
+        const file = files[i];
+
+        try{
+
+            const base64 =
+                await fileToBase64(file);
+
+            const cleanBase64 =
+                base64.split(",")[1];
+
+            const safeName =
+                Date.now() + "-" +
+                file.name
+                .replace(/\s+/g,"-")
+                .replace(/[^a-zA-Z0-9._-]/g,"");
+
+            const path =
+                "images/" + safeName;
+
+            const apiUrl =
+                `https://api.github.com/repos/${username}/${repo}/contents/${path}`;
+
+            const response =
+                await fetch(apiUrl,{
+                    method:"PUT",
+
+                    headers:{
+                        "Authorization":"Bearer " + token,
+                        "Accept":"application/vnd.github+json",
+                        "Content-Type":"application/json"
+                    },
+
+                    body:JSON.stringify({
+                        message:"Upload " + safeName,
+                        content:cleanBase64,
+                        branch:branch
+                    })
+                });
+
+            const data =
+                await response.json();
+
+            if(!response.ok){
+                throw new Error(
+                    data.message || "Upload failed"
+                );
+            }
+
+            const imageUrl =
+                `https://raw.githubusercontent.com/${username}/${repo}/${branch}/${path}`;
+
+            addResult(file,imageUrl);
+
+            status.innerText =
+                `Uploaded ${i+1} of ${files.length}`;
+
+        }catch(error){
+
+            addError(file.name,error.message);
+
+        }
+    }
+
+    status.innerText =
+        "Upload complete.";
+}
+
+
+function fileToBase64(file){
+
+    return new Promise((resolve,reject)=>{
+
+        const reader = new FileReader();
+
+        reader.onload =
+            () => resolve(reader.result);
+
+        reader.onerror =
+            reject;
+
+        reader.readAsDataURL(file);
+    });
+}
+
+
+function addResult(file,url){
+
+    const results =
+        document.getElementById("results");
+
+    const row =
+        document.createElement("tr");
+
+    const imageCell =
+        document.createElement("td");
+
+    const img =
+        document.createElement("img");
+
+    img.src =
+        URL.createObjectURL(file);
+
+    img.className =
+        "thumb";
+
+    imageCell.appendChild(img);
+
+
+    const urlCell =
+        document.createElement("td");
+
+    const wrapper =
+        document.createElement("div");
+
+    wrapper.className =
+        "urlRow";
+
+
+    const input =
+        document.createElement("input");
+
+    input.className =
+        "url";
+
+    input.value =
+        url;
+
+    input.readOnly =
+        true;
+
+
+    const copy =
+        document.createElement("button");
+
+    copy.className =
+        "copyBtn";
+
+    copy.innerText =
+        "Copy";
+
+
+    copy.onclick =
+        async function(){
+
+            await navigator.clipboard.writeText(url);
+
+            copy.innerText =
+                "Copied!";
+
+            setTimeout(()=>{
+                copy.innerText =
+                    "Copy";
+            },1200);
+        };
+
+
+    wrapper.appendChild(input);
+
+    wrapper.appendChild(copy);
+
+    urlCell.appendChild(wrapper);
+
+    row.appendChild(imageCell);
+
+    row.appendChild(urlCell);
+
+    results.appendChild(row);
+}
+
+
+function addError(filename,message){
+
+    const results =
+        document.getElementById("results");
+
+    const row =
+        document.createElement("tr");
+
+    row.innerHTML =
+        `<td>${filename}</td>
+         <td style="color:red">
+         Error: ${message}
+         </td>`;
+
+    results.appendChild(row);
+}
+
+</script>
+
+</body>
+</html>
