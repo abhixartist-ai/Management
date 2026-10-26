@@ -11,7 +11,7 @@
     "name": "Sample: Ribbon Bouquet",
     "category": "Ribbon Bouquet",
     "subcategory": "",
-    "price": 0,
+    "price": 899,
     "description": "Replace this sample with your product details.",
     "image": "https://i.postimg.cc/HWQbMvxM/IMG-20261026-WA0036.jpg"
   },
@@ -19,7 +19,7 @@
     "name": "Sample: Gift Hamper for Men",
     "category": "Customised Gift Hamper",
     "subcategory": "Men",
-    "price": 0,
+    "price": 899,
     "description": "Add the products included in your hamper.",
     "image": ""
   },
@@ -27,7 +27,7 @@
     "name": "Sample: Gift Hamper for Women",
     "category": "Customised Gift Hamper",
     "subcategory": "Women",
-    "price": 0,
+    "price": 889,
     "description": "Add the products included in your hamper.",
     "image": ""
   },
@@ -35,7 +35,7 @@
     "name": "Sample: Thread Embroidery",
     "category": "Customised Thread Embroidery",
     "subcategory": "",
-    "price": 0,
+    "price": 899,
     "description": "Add your embroidery product details.",
     "image": ""
   },
@@ -43,7 +43,7 @@
     "name": "Sample: Home Decor & Gift",
     "category": "Home Decor & Gift",
     "subcategory": "",
-    "price": 0,
+    "price": 889,
     "description": "Add your home decor or gift details.",
     "image": ""
   }
