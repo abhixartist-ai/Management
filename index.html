@@ -1,421 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GitHub Image Uploader</title>
-
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#fff7f4">
+<title>The Shruti Studio | Handmade Gifts</title>
+<meta name="description" content="Handmade bouquets, customised gift hampers, embroidery and home decor from The Shruti Studio.">
 <style>
-*{box-sizing:border-box}
-
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#f5f7fb;
-    color:#172033;
-}
-
-.container{
-    max-width:1000px;
-    margin:auto;
-    padding:20px;
-}
-
-.card{
-    background:white;
-    border-radius:16px;
-    padding:20px;
-    box-shadow:0 5px 25px rgba(0,0,0,.08);
-}
-
-h1{
-    margin-top:0;
-}
-
-label{
-    display:block;
-    font-weight:bold;
-    margin-top:15px;
-    margin-bottom:6px;
-}
-
-input{
-    width:100%;
-    padding:11px;
-    border:1px solid #d5d9e2;
-    border-radius:8px;
-}
-
-input[type=file]{
-    background:#fafbfc;
-}
-
-button{
-    border:0;
-    border-radius:8px;
-    padding:10px 14px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.uploadBtn{
-    margin-top:18px;
-    background:#2563eb;
-    color:white;
-    width:100%;
-}
-
-.copyBtn{
-    background:#eef2ff;
-    color:#1d4ed8;
-    white-space:nowrap;
-}
-
-.status{
-    margin-top:15px;
-    padding:10px;
-    border-radius:8px;
-    background:#f1f5f9;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:20px;
-}
-
-th,td{
-    padding:12px;
-    border-bottom:1px solid #e5e7eb;
-    text-align:left;
-    vertical-align:middle;
-}
-
-.thumb{
-    width:90px;
-    height:90px;
-    object-fit:contain;
-    background:#f5f5f5;
-    border-radius:8px;
-}
-
-.urlRow{
-    display:flex;
-    gap:8px;
-    align-items:center;
-}
-
-.url{
-    flex:1;
-    padding:10px;
-    background:#f8fafc;
-    border:1px solid #d5d9e2;
-    border-radius:8px;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-}
-
-@media(max-width:650px){
-    th,td{
-        padding:8px;
-    }
-
-    .thumb{
-        width:65px;
-        height:65px;
-    }
-
-    .urlRow{
-        flex-direction:column;
-        align-items:stretch;
-    }
-
-    .copyBtn{
-        width:100%;
-    }
-}
-</style>
-</head>
-
+:root{--pink:#d96f8a;--dark:#a94764;--cream:#fff7f2;--ink:#34272b;--muted:#75656a;--line:#f0dfe3}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fffdfb;color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}button{font:inherit}.topbar{background:var(--dark);color:white;text-align:center;padding:9px 12px;font-size:13px}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 5%;border-bottom:1px solid var(--line);background:#fffdfb;position:sticky;top:0;z-index:5}.brand{font: bold clamp(20px,3vw,29px) Georgia,serif}.brand span{display:block;font:11px Arial,sans-serif;letter-spacing:2.5px;color:var(--dark);margin-top:4px}
+nav{display:flex;gap:18px;font-size:14px;color:#5f4d53}nav a:hover{color:var(--dark)}.btn{display:inline-flex;justify-content:center;align-items:center;background:var(--dark);color:#fff;border:0;border-radius:28px;padding:12px 18px;font-weight:bold;font-size:14px;cursor:pointer}.btn:hover{background:#87334d}.btn.light{background:#fff;color:var(--dark);border:1px solid #edcbd5}
+.hero{background:linear-gradient(120deg,#fff1f3,#fff9f0);padding:65px 5%}.hero-inner{max-width:1180px;margin:auto;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:38px}.eyebrow{color:var(--dark);font-size:12px;font-weight:bold;letter-spacing:2px;text-transform:uppercase}.hero h1{font:clamp(36px,5vw,62px)/1.08 Georgia,serif;margin:14px 0}.hero p{color:var(--muted);font-size:17px;line-height:1.7;max-width:550px}.hero-art{min-height:285px;border-radius:28px;background:radial-gradient(circle at 50% 40%,#fff 0 16%,transparent 17%),linear-gradient(145deg,#f7d9e0,#f8e8d5);display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:#8c4358;font:28px Georgia,serif;box-shadow:0 16px 45px #a9476414}.hero-art small{display:block;font:13px Arial,sans-serif;letter-spacing:2px;margin-top:12px}
+section{padding:55px 5%}.wrap{max-width:1180px;margin:auto}.head{margin-bottom:24px}.head h2{font:bold clamp(27px,3vw,38px) Georgia,serif;margin:8px 0}.head p{margin:0;color:var(--muted);line-height:1.6}
+.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.category{padding:22px;border:1px solid var(--line);border-radius:17px;background:#fff8f7;text-align:left;cursor:pointer;min-height:100px}.category:hover{border-color:#d88ca0;transform:translateY(-1px)}.category strong{display:block;font-size:16px;margin-bottom:7px}.category span{font-size:13px;color:var(--muted)}
+.subcats{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 20px}.subcat{border:1px solid #e7c4ce;background:white;color:var(--dark);border-radius:24px;padding:9px 15px;cursor:pointer}.subcat.active,.subcat:hover{background:var(--dark);color:white}
+.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.product{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:white;box-shadow:0 7px 25px #49202a08}.photo{height:210px;background:linear-gradient(135deg,#fff0f2,#f8e9dc);display:flex;align-items:center;justify-content:center;text-align:center;color:#a35c70;padding:18px;font:21px Georgia,serif}.photo img{width:100%;height:100%;object-fit:cover}.info{padding:16px}.info h3{margin:0 0 8px;font-size:17px}.desc{font-size:13px;line-height:1.5;color:var(--muted);min-height:35px}.price-row{display:flex;justify-content:space-between;gap:8px;align-items:center;margin:14px 0 8px}.price{font-weight:bold;font-size:19px;color:var(--dark)}.ship{font-size:12px;color:var(--muted);background:#fff5f5;border-radius:20px;padding:6px 9px;white-space:nowrap}.info .btn{width:100%;margin-top:8px}.empty{grid-column:1/-1;border:1px dashed #e4b7c4;padding:25px;border-radius:16px;color:var(--muted);text-align:center}.note{font-size:12px;color:var(--muted);margin-top:17px}
+.about{background:var(--cream)}.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}.about h2,.contact h2{font:bold 36px Georgia,serif;margin:10px 0}.about p,.contact p{color:var(--muted);line-height:1.8}.box{padding:27px;background:white;border:1px solid var(--line);border-radius:20px}.contact{text-align:center;background:#fff8f7}footer{background:#3e2930;color:#fff1f3;padding:28px 5%;text-align:center;font-size:13px}footer p{margin:7px}
+@media(max-width:760px){header{padding:14px 5%;flex-wrap:wrap}nav{order:3;width:100%;justify-content:space-between;gap:8px;font-size:13px}.hero{padding:42px 5%}.hero-inner,.about-inner{grid-template-columns:1fr}.hero-art{min-height:185px}.categories{grid-template-columns:repeat(2,minmax(0,1fr))}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.photo{height:150px}.info{padding:12px}.info h3{font-size:15px}.price-row{align-items:flex-start;flex-direction:column}.section-head{align-items:flex-start;flex-direction:column}section{padding:40px 5%}}
+@media(max-width:420px){.photo{height:125px}.category{padding:16px 12px}.brand{font-size:20px}.ship{font-size:11px}}
+</style></head>
 <body>
-
-<div class="container">
-
-<div class="card">
-
-<h1>GitHub Image URL Generator</h1>
-
-<p>
-Upload multiple images and get direct image URLs.
-</p>
-
-<label>GitHub Username</label>
-<input id="username" placeholder="example: myusername">
-
-<label>Repository Name</label>
-<input id="repo" placeholder="example: product-images">
-
-<label>Branch</label>
-<input id="branch" value="main">
-
-<label>GitHub Personal Access Token</label>
-<input id="token" type="password"
-       placeholder="github_pat_...">
-
-<label>Select Images</label>
-<input id="files" type="file" accept="image/*" multiple>
-
-<button class="uploadBtn" onclick="uploadImages()">
-Upload Images
-</button>
-
-<div id="status" class="status">
-Ready.
-</div>
-
-<table>
-<thead>
-<tr>
-<th>Image</th>
-<th>Direct Image URL</th>
-</tr>
-</thead>
-
-<tbody id="results"></tbody>
-</table>
-
-</div>
-</div>
-
+<div class="topbar">Handmade with love • Custom orders available • Shipping across India</div>
+<header><a class="brand" href="#home">THE SHRUTI STUDIO<span>HANDMADE • THOUGHTFUL • PERSONAL</span></a>
+<nav><a href="#home">Home</a><a href="#categories">Categories</a><a href="#shop">Shop</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+<a class="btn" id="headerWA" href="#contact">WhatsApp Us</a></header>
+<main>
+<section class="hero" id="home"><div class="hero-inner"><div><div class="eyebrow">Little things, made with love</div><h1>Handmade gifts for your special people.</h1><p>Thoughtful bouquets, personalised hampers, embroidery and home decor — handmade to make moments memorable.</p><a class="btn" href="#shop">Explore Products</a> <a class="btn light" href="#contact">Customise a Gift</a></div><div class="hero-art">Made by hand,<br>given from the heart.<small>THE SHRUTI STUDIO</small></div></div></section>
+<section id="categories"><div class="wrap"><div class="head"><div class="eyebrow">Find your favourite</div><h2>Shop by Category</h2><p>Choose a category to explore handmade products.</p></div><div class="categories" id="categoryList"></div></div></section>
+<section id="shop"><div class="wrap"><div class="head"><div class="eyebrow">Made for gifting</div><h2 id="shopTitle">Our Products</h2><p>See the price and shipping charge, then message us on WhatsApp to order.</p></div><div class="subcats" id="subcats"></div><div class="products" id="productList"></div><p class="note">Shipping charge is ₹50 per product. Availability, customisation and final order details will be confirmed on WhatsApp.</p></div></section>
+<section class="about" id="about"><div class="wrap about-inner"><div><div class="eyebrow">Our handmade corner</div><h2>Every gift has a story.</h2><p>At The Shruti Studio, we create handmade gifts with care and attention to detail. From bouquets to customised hampers and thoughtful home decor, our goal is to help you celebrate the people and moments that matter.</p></div><div class="box"><h3>Made just for you</h3><p>Have a colour, theme or budget in mind? Send us your idea on WhatsApp. We’ll discuss the details and help you create a gift that feels personal.</p><a class="btn" id="customWA" href="#contact">Ask about a custom order</a></div></div></section>
+<section class="contact" id="contact"><div class="wrap"><div class="eyebrow">Let's make someone smile</div><h2>Ready to place an order?</h2><p>Message us on WhatsApp with the product name. We’ll confirm availability, customisation, delivery details and the final total.</p><a class="btn" id="contactWA" href="#">Chat on WhatsApp</a><p style="font-size:13px">Instagram: <a id="instagramLink" href="https://www.instagram.com/the_shruti_studio/" target="_blank" rel="noopener">@the_shruti_studio</a></p></div></section>
+</main><footer><p><strong>THE SHRUTI STUDIO</strong></p><p>Handmade with love • Bouquets • Gifts • Embroidery • Home decor</p><p>© <span id="year"></span> The Shruti Studio</p></footer>
 <script>
-
-async function uploadImages(){
-
-    const username =
-        document.getElementById("username").value.trim();
-
-    const repo =
-        document.getElementById("repo").value.trim();
-
-    const branch =
-        document.getElementById("branch").value.trim() || "main";
-
-    const token =
-        document.getElementById("token").value.trim();
-
-    const files =
-        document.getElementById("files").files;
-
-    const status =
-        document.getElementById("status");
-
-    const results =
-        document.getElementById("results");
-
-    if(!username || !repo || !token){
-        alert("Username, Repository and Token are required.");
-        return;
-    }
-
-    if(files.length === 0){
-        alert("Please select images.");
-        return;
-    }
-
-    status.innerText =
-        "Uploading " + files.length + " image(s)...";
-
-    for(let i=0;i<files.length;i++){
-
-        const file = files[i];
-
-        try{
-
-            const base64 =
-                await fileToBase64(file);
-
-            const cleanBase64 =
-                base64.split(",")[1];
-
-            const safeName =
-                Date.now() + "-" +
-                file.name
-                .replace(/\s+/g,"-")
-                .replace(/[^a-zA-Z0-9._-]/g,"");
-
-            const path =
-                "images/" + safeName;
-
-            const apiUrl =
-                `https://api.github.com/repos/${username}/${repo}/contents/${path}`;
-
-            const response =
-                await fetch(apiUrl,{
-                    method:"PUT",
-
-                    headers:{
-                        "Authorization":"Bearer " + token,
-                        "Accept":"application/vnd.github+json",
-                        "Content-Type":"application/json"
-                    },
-
-                    body:JSON.stringify({
-                        message:"Upload " + safeName,
-                        content:cleanBase64,
-                        branch:branch
-                    })
-                });
-
-            const data =
-                await response.json();
-
-            if(!response.ok){
-                throw new Error(
-                    data.message || "Upload failed"
-                );
-            }
-
-            const imageUrl =
-                `https://raw.githubusercontent.com/${username}/${repo}/${branch}/${path}`;
-
-            addResult(file,imageUrl);
-
-            status.innerText =
-                `Uploaded ${i+1} of ${files.length}`;
-
-        }catch(error){
-
-            addError(file.name,error.message);
-
-        }
-    }
-
-    status.innerText =
-        "Upload complete.";
+/*
+SETUP:
+1. Replace 91YOURNUMBER with your WhatsApp number (country code included, no + or spaces).
+2. Edit products.json to add products, categories, prices, descriptions and photos.
+3. Each product card displays the product price + ₹50 shipping.
+*/
+const WHATSAPP_NUMBER="91YOURNUMBER";
+const INSTAGRAM_URL="https://www.instagram.com/the_shruti_studio/";
+const categories=[
+ {name:"Pipe Cleaner Flowers & Bouquet",description:"Handmade pipe cleaner bouquets, pots and flowers"},
+ {name:"Ribbon Bouquet",description:"Ribbon roses and handmade ribbon bouquets"},
+ {name:"Customised Gift Hamper",description:"Personalised gift hampers for Men and Women",subcategories:["Men","Women"]},
+ {name:"Customised Thread Embroidery",description:"Personalised hand embroidery gifts"},
+ {name:"Home Decor & Gift",description:"Handmade decor and thoughtful gifts"}
+];
+const sample=[
+ {name:"Sample: Pipe Cleaner Bouquet",category:"Pipe Cleaner Flowers & Bouquet",subcategory:"",price:0,description:"Replace this sample with your product details.",image:""},
+ {name:"Sample: Ribbon Bouquet",category:"Ribbon Bouquet",subcategory:"",price:0,description:"Replace this sample with your product details.",image:""},
+ {name:"Sample: Gift Hamper for Men",category:"Customised Gift Hamper",subcategory:"Men",price:0,description:"Add the products included in your hamper.",image:""},
+ {name:"Sample: Gift Hamper for Women",category:"Customised Gift Hamper",subcategory:"Women",price:0,description:"Add the products included in your hamper.",image:""},
+ {name:"Sample: Thread Embroidery",category:"Customised Thread Embroidery",subcategory:"",price:0,description:"Add your embroidery product details.",image:""},
+ {name:"Sample: Home Decor & Gift",category:"Home Decor & Gift",subcategory:"",price:0,description:"Add your home decor or gift details.",image:""}
+];
+let products=[],activeCategory="";
+const $=id=>document.getElementById(id);
+function waUrl(message){return "https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(message)}
+function renderCategories(){
+ $("categoryList").innerHTML=categories.map(c=>`<button class="category" data-cat="${c.name}"><strong>${c.name}</strong><span>${c.description}</span></button>`).join("");
+ $("categoryList").querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{activeCategory=b.dataset.cat;renderProducts();$("shop").scrollIntoView({behavior:"smooth"})}));
 }
-
-
-function fileToBase64(file){
-
-    return new Promise((resolve,reject)=>{
-
-        const reader = new FileReader();
-
-        reader.onload =
-            () => resolve(reader.result);
-
-        reader.onerror =
-            reject;
-
-        reader.readAsDataURL(file);
-    });
+function renderProducts(){
+ const cat=categories.find(c=>c.name===activeCategory);
+ $("shopTitle").textContent=activeCategory||"Our Products";
+ $("subcats").innerHTML=cat&&cat.subcategories?cat.subcategories.map(s=>`<button class="subcat" data-sub="${s}">${s}</button>`).join(""):"";
+ $("subcats").querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{ $("subcats").querySelectorAll("button").forEach(x=>x.classList.remove("active"));b.classList.add("active");draw(activeCategory,b.dataset.sub)}));
+ draw(activeCategory,"");
 }
-
-
-function addResult(file,url){
-
-    const results =
-        document.getElementById("results");
-
-    const row =
-        document.createElement("tr");
-
-    const imageCell =
-        document.createElement("td");
-
-    const img =
-        document.createElement("img");
-
-    img.src =
-        URL.createObjectURL(file);
-
-    img.className =
-        "thumb";
-
-    imageCell.appendChild(img);
-
-
-    const urlCell =
-        document.createElement("td");
-
-    const wrapper =
-        document.createElement("div");
-
-    wrapper.className =
-        "urlRow";
-
-
-    const input =
-        document.createElement("input");
-
-    input.className =
-        "url";
-
-    input.value =
-        url;
-
-    input.readOnly =
-        true;
-
-
-    const copy =
-        document.createElement("button");
-
-    copy.className =
-        "copyBtn";
-
-    copy.innerText =
-        "Copy";
-
-
-    copy.onclick =
-        async function(){
-
-            await navigator.clipboard.writeText(url);
-
-            copy.innerText =
-                "Copied!";
-
-            setTimeout(()=>{
-                copy.innerText =
-                    "Copy";
-            },1200);
-        };
-
-
-    wrapper.appendChild(input);
-
-    wrapper.appendChild(copy);
-
-    urlCell.appendChild(wrapper);
-
-    row.appendChild(imageCell);
-
-    row.appendChild(urlCell);
-
-    results.appendChild(row);
+function draw(cat="",sub=""){
+ const list=products.filter(p=>(!cat||p.category===cat)&&(!sub||p.subcategory===sub));
+ $("productList").innerHTML=list.length?list.map(p=>{
+ const image=p.image?`<img src="${p.image}" alt="${p.name}" loading="lazy">`:`<span>${p.name}</span>`;
+ const price=Number(p.price)>0?"₹"+Number(p.price).toLocaleString("en-IN"):"Ask for price";
+ const msg=`Hi The Shruti Studio! I'm interested in: ${p.name}. Product price: ${Number(p.price)>0?"₹"+Number(p.price).toLocaleString("en-IN"):"Please share price"}. Shipping charge: ₹50 per product. Please confirm availability and details.`;
+ return `<article class="product"><div class="photo">${image}</div><div class="info"><h3>${p.name}</h3><div class="desc">${p.description||""}</div><div class="price-row"><span class="price">${price}</span><span class="ship">Shipping ₹50</span></div><button class="btn order" data-msg="${encodeURIComponent(msg)}">Order on WhatsApp</button></div></article>`;
+ }).join(""):`<div class="empty">No products added in this category yet. Add products in products.json to display them here.</div>`;
+ $("productList").querySelectorAll(".order").forEach(b=>b.addEventListener("click",()=>{if(WHATSAPP_NUMBER.includes("YOURNUMBER")){alert("Before publishing, add your WhatsApp number in index.html.");return}window.open(waUrl(decodeURIComponent(b.dataset.msg)),"_blank","noopener")}));
 }
-
-
-function addError(filename,message){
-
-    const results =
-        document.getElementById("results");
-
-    const row =
-        document.createElement("tr");
-
-    row.innerHTML =
-        `<td>${filename}</td>
-         <td style="color:red">
-         Error: ${message}
-         </td>`;
-
-    results.appendChild(row);
-}
-
-</script>
-
-</body>
-</html>
+$("year").textContent=new Date().getFullYear();
+$("instagramLink").href=INSTAGRAM_URL;
+["headerWA","customWA","contactWA"].forEach(id=>$(id).addEventListener("click",e=>{if(WHATSAPP_NUMBER.includes("YOURNUMBER")){e.preventDefault();alert("Before publishing, add your WhatsApp number in index.html.");}else $(id).href=waUrl("Hi The Shruti Studio! I'd like to enquire about your handmade products.")}));
+fetch("products.json").then(r=>r.ok?r.json():Promise.reject()).then(data=>{products=data;renderCategories();renderProducts()}).catch(()=>{products=sample;renderCategories();renderProducts()});
+</script></body></html>
