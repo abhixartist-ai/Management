@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Sample: Pipe Cleaner Bouquet",
+    "category": "Pipe Cleaner Flowers & Bouquet",
+    "subcategory": "",
+    "price": 899,
+    "description": "Replace this sample with your product details.",
+    "https://postimg.cc/qgvtVL2B": ""
+  },
+  {
+    "name": "Sample: Ribbon Bouquet",
+    "category": "Ribbon Bouquet",
+    "subcategory": "",
+    "price": 0,
+    "description": "Replace this sample with your product details.",
+    "image": ""
+  },
+  {
+    "name": "Sample: Gift Hamper for Men",
+    "category": "Customised Gift Hamper",
+    "subcategory": "Men",
+    "price": 0,
+    "description": "Add the products included in your hamper.",
+    "image": ""
+  },
+  {
+    "name": "Sample: Gift Hamper for Women",
+    "category": "Customised Gift Hamper",
+    "subcategory": "Women",
+    "price": 0,
+    "description": "Add the products included in your hamper.",
+    "image": ""
+  },
+  {
+    "name": "Sample: Thread Embroidery",
+    "category": "Customised Thread Embroidery",
+    "subcategory": "",
+    "price": 0,
+    "description": "Add your embroidery product details.",
+    "image": ""
+  },
+  {
+    "name": "Sample: Home Decor & Gift",
+    "category": "Home Decor & Gift",
+    "subcategory": "",
+    "price": 0,
+    "description": "Add your home decor or gift details.",
+    "image": ""
+  }
+]
